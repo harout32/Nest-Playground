@@ -4,9 +4,10 @@ import { AppService } from './app.service';
 import { PostsController } from './posts/posts.controller';
 import { PostsService } from './posts/posts.service';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
+import { GlobalModule } from './global/global.module';
 
 @Module({
-  imports: [],
+  imports: [GlobalModule],
   controllers: [AppController, PostsController],
   providers: [AppService, PostsService],
 })

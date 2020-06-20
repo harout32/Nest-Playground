@@ -1,8 +1,9 @@
-import { Controller, Get, Param, Post, Body, HttpException, HttpStatus, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, HttpException, HttpStatus, Put, Delete, UsePipes } from '@nestjs/common';
 import { NotFoundException } from 'src/exceptions/not-found-exception';
 import { PostsService } from './posts.service';
 import { PostInt } from './interfaces/post.interface';
 import { PostDto } from './dto/post.dto';
+import { Roles } from 'src/global/decorators/roles.decorator';
 
 
 
@@ -17,6 +18,7 @@ export class PostsController {
      * @memberof PostsController
      */
     @Get('')
+    @Roles('admin')
     getAll(): PostInt[] {
         return this.postsService.findAll();
     }
